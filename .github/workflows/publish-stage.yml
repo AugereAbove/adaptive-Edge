@@ -1,0 +1,340 @@
+name: Publish AdaptiveEdge Stage
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_message:
+        description: Commit message for this publication stage
+        required: true
+        type: string
+
+      source_sha:
+        description: Exact AdaptiveEdgeSource commit SHA to publish from
+        required: true
+        type: string
+
+      manifest:
+        description: JSON publication manifest
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: adaptiveedge-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repository
+        uses: actions/checkout@v4
+        with:
+          repository: AugereAbove/adaptive-Edge
+          ref: main
+          fetch-depth: 0
+          token: ${{ github.token }}
+          path: public
+
+      - name: Checkout private source repository
+        uses: actions/checkout@v4
+        with:
+          repository: AugereAbove/AdaptiveEdgeSource
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 1
+          token: ${{ secrets.ADAPTIVE_EDGE_SOURCE_TOKEN }}
+          path: source
+
+      - name: Parse and validate publication manifest
+        env:
+          MANIFEST_JSON: ${{ inputs.manifest }}
+        run: |
+          python <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          manifest = json.loads(os.environ["MANIFEST_JSON"])
+
+          allowed_keys = {"copy", "write", "delete"}
+
+          unknown = set(manifest) - allowed_keys
+          if unknown:
+              raise SystemExit(f"Unknown manifest keys: {sorted(unknown)}")
+
+          copy = manifest.get("copy", [])
+          write = manifest.get("write", [])
+          delete = manifest.get("delete", [])
+
+          if not isinstance(copy, list):
+              raise SystemExit("'copy' must be an array")
+
+          if not isinstance(write, list):
+              raise SystemExit("'write' must be an array")
+
+          if not isinstance(delete, list):
+              raise SystemExit("'delete' must be an array")
+
+          def validate_path(value):
+              if not isinstance(value, str) or not value:
+                  raise SystemExit(f"Invalid path: {value!r}")
+
+              p = Path(value)
+
+              if p.is_absolute():
+                  raise SystemExit(f"Absolute paths are forbidden: {value}")
+
+              if ".." in p.parts:
+                  raise SystemExit(f"Parent traversal is forbidden: {value}")
+
+              forbidden = {
+                  ".git",
+                  ".env",
+                  ".venv",
+                  "venv",
+                  "__pycache__",
+              }
+
+              if any(part in forbidden for part in p.parts):
+                  raise SystemExit(f"Forbidden path: {value}")
+
+          for item in copy:
+              if not isinstance(item, dict):
+                  raise SystemExit("Every copy entry must be an object")
+
+              if set(item) != {"source", "destination"}:
+                  raise SystemExit(
+                      "Each copy entry must contain exactly "
+                      "'source' and 'destination'"
+                  )
+
+              validate_path(item["source"])
+              validate_path(item["destination"])
+
+          for item in write:
+              if not isinstance(item, dict):
+                  raise SystemExit("Every write entry must be an object")
+
+              if set(item) != {"destination", "content"}:
+                  raise SystemExit(
+                      "Each write entry must contain exactly "
+                      "'destination' and 'content'"
+                  )
+
+              validate_path(item["destination"])
+
+              if not isinstance(item["content"], str):
+                  raise SystemExit("Write content must be a string")
+
+          for item in delete:
+              validate_path(item)
+
+          Path("publication-manifest.json").write_text(
+              json.dumps(manifest, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Apply publication manifest
+        run: |
+          python <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+
+          manifest = json.loads(
+              Path("publication-manifest.json").read_text(encoding="utf-8")
+          )
+
+          source_root = Path("source").resolve()
+          public_root = Path("public").resolve()
+
+          def resolve_inside(root, relative):
+              path = (root / relative).resolve()
+
+              if path != root and root not in path.parents:
+                  raise SystemExit(f"Path escapes repository: {relative}")
+
+              return path
+
+          for entry in manifest.get("copy", []):
+              src = resolve_inside(source_root, entry["source"])
+              dst = resolve_inside(public_root, entry["destination"])
+
+              if not src.exists():
+                  raise SystemExit(
+                      f"Source path does not exist: {entry['source']}"
+                  )
+
+              if src.is_dir():
+                  dst.mkdir(parents=True, exist_ok=True)
+
+                  for child in src.rglob("*"):
+                      if child.is_dir():
+                          continue
+
+                      relative = child.relative_to(src)
+                      target = dst / relative
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      shutil.copy2(child, target)
+
+              else:
+                  dst.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(src, dst)
+
+          for entry in manifest.get("write", []):
+              dst = resolve_inside(public_root, entry["destination"])
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              dst.write_text(entry["content"], encoding="utf-8")
+
+          for relative in manifest.get("delete", []):
+              dst = resolve_inside(public_root, relative)
+
+              if dst.is_dir():
+                  shutil.rmtree(dst)
+              elif dst.exists():
+                  dst.unlink()
+          PY
+
+      - name: Reject obvious secrets and private artifacts
+        working-directory: public
+        run: |
+          set -e
+
+          forbidden_paths="$(find . \
+            \( \
+              -name '.env' \
+              -o -name '.env.*' \
+              -o -name '*.pem' \
+              -o -name '*.key' \
+              -o -name 'id_rsa' \
+              -o -name 'id_ed25519' \
+              -o -name '__pycache__' \
+              -o -name '.venv' \
+              -o -name 'venv' \
+            \) \
+            -print)"
+
+          if [ -n "$forbidden_paths" ]; then
+            echo "Forbidden files detected:"
+            echo "$forbidden_paths"
+            exit 1
+          fi
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate package when possible
+        working-directory: public
+        shell: bash
+        run: |
+          set -e
+
+          if [ -f pyproject.toml ]; then
+            python -m pip install --upgrade pip
+
+            if python -m pip install -e .; then
+              echo "Package installed successfully."
+            else
+              echo "Current staged milestone is not yet installable."
+              echo "Skipping package-level installation validation."
+            fi
+          fi
+
+          if [ -d tests ]; then
+            python -m pip install pytest || true
+            pytest -q
+          fi
+
+      - name: Inspect publication diff
+        working-directory: public
+        run: |
+          git status --short
+          git diff --stat
+          git diff
+
+      - name: Configure Git author
+        working-directory: public
+        run: |
+          git config user.name "AugereAbove"
+          git config user.email "238561773+AugereAbove@users.noreply.github.com"
+
+          echo "Git author:"
+          git config user.name
+          git config user.email
+
+      - name: Ensure remote main has not changed unexpectedly
+        working-directory: public
+        run: |
+          set -e
+
+          START_SHA="$(git rev-parse HEAD)"
+
+          git fetch origin main
+
+          REMOTE_SHA="$(git rev-parse origin/main)"
+
+          if [ "$START_SHA" != "$REMOTE_SHA" ]; then
+            echo "Public main changed during publication."
+            echo "Start:  $START_SHA"
+            echo "Remote: $REMOTE_SHA"
+            exit 1
+          fi
+
+      - name: Commit staged milestone
+        working-directory: public
+        env:
+          COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        run: |
+          set -e
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Manifest produced no repository changes."
+            exit 1
+          fi
+
+          git commit -m "$COMMIT_MESSAGE"
+
+          echo "Created commit:"
+          git log -1 --format=fuller
+
+      - name: Verify commit attribution
+        working-directory: public
+        run: |
+          set -e
+
+          AUTHOR_NAME="$(git log -1 --format='%an')"
+          AUTHOR_EMAIL="$(git log -1 --format='%ae')"
+
+          if [ "$AUTHOR_NAME" != "AugereAbove" ]; then
+            echo "Unexpected author name: $AUTHOR_NAME"
+            exit 1
+          fi
+
+          if [ "$AUTHOR_EMAIL" != "238561773+AugereAbove@users.noreply.github.com" ]; then
+            echo "Unexpected author email: $AUTHOR_EMAIL"
+            exit 1
+          fi
+
+      - name: Push
+        working-directory: public
+        run: |
+          git push origin HEAD:main
+
+      - name: Publication summary
+        working-directory: public
+        run: |
+          echo "## AdaptiveEdge publication" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Commit:** \`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Message:** $(git log -1 --format='%s')" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Author:** $(git log -1 --format='%an <%ae>')" >> "$GITHUB_STEP_SUMMARY"
