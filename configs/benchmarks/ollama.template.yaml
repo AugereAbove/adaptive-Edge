@@ -1,0 +1,15 @@
+experiment:
+  name: local-ollama-functional-check
+  repetitions: 5
+  warmup_runs: 1
+  seed: 42
+  timeout_seconds: 180
+  mode: warm
+models:
+  - backend: ollama
+    model: REPLACE_WITH_INSTALLED_SMALL_MODEL_TAG
+    label: local-small
+  - backend: ollama
+    model: REPLACE_WITH_INSTALLED_LARGE_MODEL_TAG
+    label: local-large
+suite: basic

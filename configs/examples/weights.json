@@ -1,0 +1,8 @@
+{
+  "quality": 0.6,
+  "latency_ms": 0.3,
+  "ram_gb": 0.1,
+  "vram_gb": 0,
+  "throughput_tps": 0,
+  "size_gb": 0
+}

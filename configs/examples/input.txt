@@ -1,0 +1,1 @@
+Return only the answer: 6 * 7

@@ -1,0 +1,4 @@
+{
+  "max_latency_ms": 50,
+  "max_memory_gb": 1
+}

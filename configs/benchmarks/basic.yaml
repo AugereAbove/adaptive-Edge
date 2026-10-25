@@ -1,0 +1,17 @@
+experiment:
+  name: functional-mock-pipeline
+  repetitions: 3
+  warmup_runs: 1
+  seed: 42
+  timeout_seconds: 30
+  mode: warm
+models:
+  - backend: mock
+    model: mock-small
+    size_gb: 0.5
+    parameter_count: 1000000000
+  - backend: mock
+    model: mock-large
+    size_gb: 2
+    parameter_count: 4000000000
+suite: basic

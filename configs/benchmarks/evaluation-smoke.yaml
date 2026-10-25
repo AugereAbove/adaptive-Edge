@@ -1,0 +1,23 @@
+experiment:
+  name: policy-pipeline-smoke
+  repetitions: 2
+  warmup_runs: 1
+  seed: 123
+models:
+  - backend: mock
+    model: mock-small
+    size_gb: 0.5
+    parameter_count: 1000000000
+  - backend: mock
+    model: mock-large
+    size_gb: 2
+    parameter_count: 4000000000
+suite: custom
+tasks:
+  - id: arithmetic
+    category: reasoning
+    prompt: 'Return only the answer: 6 * 7'
+    reference: '42'
+    metrics: [normalized_exact_match]
+    dataset: adaptiveedge-functional
+    dataset_version: '1'
