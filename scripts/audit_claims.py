@@ -10,7 +10,10 @@ def audit(root: Path) -> None:
     artifact = root / "examples/results/baseline-real"
     manifest = json.loads((artifact / "manifest.json").read_text(encoding="utf-8"))
     for name, expected in manifest["checksums"].items():
-        assert hashlib.sha256((artifact / name).read_bytes()).hexdigest() == expected, name
+        assert (
+            hashlib.sha256((artifact / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+            == expected
+        ), name
     configs = {
         name: BenchmarkConfiguration.model_validate_json(
             (artifact / f"{name}-config.json").read_text(encoding="utf-8")

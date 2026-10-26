@@ -288,7 +288,7 @@ def curate(source: Path, destination: Path) -> None:
             )
         manifest["checksums"] = {
             str(path.relative_to(destination)).replace("\\", "/"): hashlib.sha256(
-                path.read_bytes()
+                path.read_bytes().replace(b"\r\n", b"\n")
             ).hexdigest()
             for path in sorted(destination.rglob("*"))
             if path.is_file() and path.name != "manifest.json"

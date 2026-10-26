@@ -27,3 +27,5 @@ Splits are explicit in configurations, manifests, records and CSV. A version 1 d
 The original baseline hardware profile predates optional NVML installation; a postrun snapshot identifies the GPU separately. Background verification work was active. This and fixed order limit timing interpretation. Current device/free-memory snapshots must not overwrite the original hardware record.
 
 Benchmark reproduction restores archived tasks and settings under a new experiment ID and records reproduction_of provenance. It warns about mutable tags/runtime/hardware. Policy evaluation is rerun with its recorded calibration ID, configuration, weights and constraints; the benchmark-only reproduce command rejects evaluation/inference records explicitly.
+
+Curated artifact checksums use SHA-256 with CRLF normalized to LF. `.gitattributes` enforces LF text checkouts so Windows and Linux validate the same published artifact bytes. This normalization changes no experimental values.
