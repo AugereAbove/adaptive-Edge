@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: 'Please cite the version of AdaptiveEdge used in your experiments.'
+title: AdaptiveEdge
+type: software
+authors:
+  - name: AdaptiveEdge contributors
+version: 0.1.0
+license: MIT
+abstract: 'A local framework for reproducible language model benchmarking and evidence-based adaptive selection under resource constraints.'
