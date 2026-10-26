@@ -1,6 +1,6 @@
 # AdaptiveEdge
 
-> Publication status: Supporting material is being published in stages. The source test suite and CI workflow are excluded from this checkout, and no tests or live benchmarks have been run as part of the transfer. Baseline measurements below describe the archived source run, not measurements produced by this checkout.
+> Publication status: The source test suite and CI workflow are excluded from this checkout, and no tests or live benchmarks have been run as part of the transfer. Baseline measurements below describe the archived source run, not measurements produced by this checkout.
 
 AdaptiveEdge is an experimental framework for benchmarking and dynamically selecting local language models under compute constraints. It records quality, latency, memory and throughput across configurations to investigate whether adaptive policies can preserve quality while reducing computational cost.
 
@@ -25,7 +25,7 @@ Local model choice involves competing quality, latency, throughput and memory ob
 - Frozen-evidence held-out policy evaluation with failures, abstentions and observed constraint compliance.
 - Task-level bootstrap intervals, prediction errors, descriptive policy effects and an equal-weight ablation.
 - JSON/CSV tables, Markdown reports and optional high-resolution SVG/PNG research figures.
-- Strict typing and source/repository audit tools. The source test suite and CI are excluded from this staged checkout.
+- Strict typing and source/repository audit tools. The source test suite and CI are excluded from this checkout.
 
 ## Architecture
 

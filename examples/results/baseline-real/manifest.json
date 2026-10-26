@@ -1,0 +1,5096 @@
+{
+  "version": "0.1.0",
+  "machine_details": {
+    "cpu_name": "Intel(R) Core(TM) Ultra 7 265K",
+    "gpu_driver": "NVIDIA GeForce RTX 4070 Ti, 12282 MiB, 610.74"
+  },
+  "experiment_ids": {
+    "calibration": "f46a46f7e3bb-1913531a3d4543c1abc53636f147ab94",
+    "evaluation": "ad94f65cea9a-1f2001b3aaa04b53ba8b35e98ed571c1",
+    "ablation": "efc1e539cca8-bba0ecc94ef040398939be023b22ba67"
+  },
+  "models": [
+    {
+      "name": "qwen2.5:0.5b",
+      "model": "qwen2.5:0.5b",
+      "modified_at": "2026-10-07T07:10:13.3886585+02:00",
+      "size": 397821319,
+      "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "494.03M",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 896
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    {
+      "name": "smollm2:1.7b",
+      "model": "smollm2:1.7b",
+      "modified_at": "2026-10-07T07:11:00.5135691+02:00",
+      "size": 1820428533,
+      "digest": "cef4a1e09247f018ca0c482ad4c2ce1474aba5e87f245dacf97f07948d05d8b4",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "1.7B",
+        "quantization_level": "Q8_0",
+        "context_length": 8192,
+        "embedding_length": 2048
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    {
+      "name": "qwen3:4b",
+      "model": "qwen3:4b",
+      "modified_at": "2026-09-15T19:06:50.1192143+02:00",
+      "size": 2497293931,
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    }
+  ],
+  "supplemental_postrun_hardware": {
+    "os": "Windows 10",
+    "cpu": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "physical_cores": 20,
+    "logical_cores": 20,
+    "total_ram_gb": 33.70625024,
+    "available_ram_gb": 9.817694208,
+    "gpu_models": [
+      "NVIDIA GeForce RTX 4070 Ti"
+    ],
+    "gpu_count": 1,
+    "total_vram_gb": {
+      "value": 12.878610432,
+      "status": "measured",
+      "unit": "GB",
+      "scope": "device_system",
+      "detail": ""
+    },
+    "available_vram_gb": {
+      "value": 8.711286784,
+      "status": "measured",
+      "unit": "GB",
+      "scope": "device_system",
+      "detail": ""
+    },
+    "accelerator": "NVIDIA NVML",
+    "timestamp": "2026-10-07T05:39:43.435360Z"
+  },
+  "hardware_note": "GPU support was installed after calibration began. The original fingerprint is frozen; the postrun NVML snapshot is supplemental, not an inference-peak measurement.",
+  "execution_note": "Sequential model requests on a personal Windows desktop with other applications and development/verification processes active. Fixed order; no thermal or background-load control. Preliminary in-template evidence only.",
+  "software_packages": {
+    "adaptiveedge": "0.1.0",
+    "pydantic": "2.13.5",
+    "PyYAML": "6.0.3",
+    "psutil": "7.2.2",
+    "typer": "0.27.3",
+    "httpx": "0.28.1",
+    "matplotlib": "3.11.2",
+    "numpy": "2.4.6"
+  },
+  "warmup": "One first-task call per calibration model; one actual-task call before each policy/ablation measurement. Excluded from observations.",
+  "calibration": {
+    "hardware": {
+      "os": "Windows 10",
+      "cpu": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+      "physical_cores": 20,
+      "logical_cores": 20,
+      "total_ram_gb": 33.70625024,
+      "available_ram_gb": 8.63479808,
+      "gpu_models": [],
+      "gpu_count": null,
+      "total_vram_gb": {
+        "value": null,
+        "status": "unsupported",
+        "unit": "GB",
+        "scope": "device_system",
+        "detail": "Install the gpu extra for optional NVIDIA NVML detection"
+      },
+      "available_vram_gb": {
+        "value": null,
+        "status": "unsupported",
+        "unit": "GB",
+        "scope": "device_system",
+        "detail": "Install the gpu extra for optional NVIDIA NVML detection"
+      },
+      "accelerator": null,
+      "timestamp": "2026-10-07T05:16:47.672110Z"
+    },
+    "software": {
+      "adaptiveedge": "0.1.0",
+      "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "platform": "Windows-10-10.0.26200-SP0"
+    },
+    "observations": 108,
+    "task_count": 12,
+    "config_hash": "f46a46f7e3bb0096eb5fcb7a73d11048b24af7f3e4c9d35cdcecd66be2536e25"
+  },
+  "evaluation": {
+    "configuration": {
+      "experiment": {
+        "name": "real-heldout",
+        "split": "evaluation",
+        "repetitions": 3,
+        "warmup_runs": 1,
+        "seed": 42,
+        "timeout_seconds": 120.0,
+        "mode": "warm"
+      },
+      "models": [
+        {
+          "backend": "ollama",
+          "model": "qwen2.5:0.5b",
+          "label": "",
+          "family": "qwen2",
+          "parameter_count": null,
+          "size_gb": 0.397821319,
+          "quantization": "Q4_K_M",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": []
+        },
+        {
+          "backend": "ollama",
+          "model": "smollm2:1.7b",
+          "label": "",
+          "family": "llama",
+          "parameter_count": null,
+          "size_gb": 1.820428533,
+          "quantization": "Q8_0",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": []
+        },
+        {
+          "backend": "ollama",
+          "model": "qwen3:4b",
+          "label": "",
+          "family": "qwen3",
+          "parameter_count": null,
+          "size_gb": 2.497293931,
+          "quantization": "Q4_K_M",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": [
+            {
+              "name": "think",
+              "value": false
+            }
+          ]
+        }
+      ],
+      "suite": "custom",
+      "tasks": [
+        {
+          "id": "evaluation-classification-0",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: I loved every minute of the concert.",
+          "reference": "positive",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-classification-1",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The food tasted terrible.",
+          "reference": "negative",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-classification-2",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The meeting starts at noon.",
+          "reference": "neutral",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-0",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Tessa moved to Bern last year. Reply with the city only.",
+          "reference": "Bern",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-1",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Niko moved to Kyoto last year. Reply with the city only.",
+          "reference": "Kyoto",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-2",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Arun moved to Perth last year. Reply with the city only.",
+          "reference": "Perth",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-0",
+          "category": "reasoning",
+          "prompt": "What is 9 times 8? Give only the final numeric answer.",
+          "reference": "72",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-1",
+          "category": "reasoning",
+          "prompt": "There are 23 books. 7 are lent out. How many remain? Give only the final numeric answer.",
+          "reference": "16",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-2",
+          "category": "reasoning",
+          "prompt": "What is (18 + 12) divided by 5? Give only the final numeric answer.",
+          "reference": "6",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-0",
+          "category": "code",
+          "prompt": "Write only a Python function def subtract(a, b): to return a minus b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"subtract\", \"cases\": [{\"args\": [9, 3], \"expected\": 6}, {\"args\": [-2, 2], \"expected\": -4}, {\"args\": [7, 7], \"expected\": 0}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-1",
+          "category": "code",
+          "prompt": "Write only a Python function def smaller(a, b): to return the smaller of a and b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"smaller\", \"cases\": [{\"args\": [2, 3], \"expected\": 2}, {\"args\": [-2, -1], \"expected\": -2}, {\"args\": [7, 7], \"expected\": 7}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-2",
+          "category": "code",
+          "prompt": "Write only a Python function def odd(n): to return whether n is odd as a bool. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"odd\", \"cases\": [{\"args\": [2], \"expected\": false}, {\"args\": [3], \"expected\": true}, {\"args\": [0], \"expected\": false}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        }
+      ]
+    },
+    "provenance": {
+      "kind": "policy_evaluation",
+      "training_experiment": "f46a46f7e3bb-1913531a3d4543c1abc53636f147ab94",
+      "training_run_ids": [
+        "1d97acc3a688496ba527131e1e201f1c",
+        "41172eb8c0264709b091b7ac04c38314",
+        "5c72321670b0454f99dc0c9a6347307c",
+        "6ffc83d113f144998ca72318fb257f69",
+        "370ab34522874b11a185e00eed43b4a3",
+        "5a6d2173e2a74fc498aa3510227fc23b",
+        "d90d158d63684e299b22c700e2f5ae75",
+        "20674f15103c47729b904dec17825781",
+        "9b5a6ce6c3f644d1b5561c2ca07518bc",
+        "0bbcb1c1fa68425d87a4651ba3bb739b",
+        "5bd2110205c94ab0b7c9dde904d8b967",
+        "3a727bd1f2cb4d19825a77ea8e50e90c",
+        "175cd4922f254b109de95312e94fc222",
+        "007c0bc7a1c14bc29637b518f54dec1a",
+        "b562e0a1ccc040588bad66c1e20fd15f",
+        "54abd58f26cf4253ab5acee18200610e",
+        "2f0cc7d3472b44a782cc35997822876c",
+        "5bc0f92548744f359ff8ace51acb8c3a",
+        "73bd5849b6144b3e84694dcbd86c4452",
+        "aab2311b897f460c8589b2acabe5a716",
+        "bfa27efe68234b1a88e76c455d83d7bb",
+        "d38ac69f532b40cf9e60fa01beb65854",
+        "29589a38c2fe459c8117508bdd9e6a07",
+        "0d567f661c4c4c24bd5e6a36ad230eb1",
+        "0cc03f8f452c47bfa1e5d5173a60c841",
+        "05cf1862f6f344bbb546de44aa1c9686",
+        "972f5fd4bcee4e96826768691d99f6b3",
+        "05c5bd40c99f4e76b5747f1478330e23",
+        "281509bb6be845a09bea3fc3d0ac2be0",
+        "7110ac4bc3484f35832f28e4da92bd98",
+        "0e63cde1cf9d45d0aaa3d206351ccecb",
+        "786f853f1aaa411bacff2452eec6703a",
+        "0c1a23f3d30243a6b81d2b803dcc8f8e",
+        "100e6678d04b4dadb92cd5313e8f4ab2",
+        "6f1949a4a6754910a97a96380ae4f47c",
+        "af6dc25347034c8ea65ec9b31bbf011a",
+        "d973092e7e5348c49ae8eb167bd53136",
+        "e6a7481b202e4180ac679e254b132b6a",
+        "014a89348f284e70af72bf8e7e73da1b",
+        "3e5c1544d62441ada8f5aaf76b0885e6",
+        "d074bdc493594aa485acc857321859af",
+        "18cb9eba203f4f0d9336034bcc5a2ce6",
+        "812abc16fdd74f61bb603c4c39741e43",
+        "8147a401bdc444ef9437b0f2d1a237a5",
+        "4c2cf9ba3ce14688a7e3816909b14dee",
+        "6c5c4ed99d1e498390e6af0bb6cd060c",
+        "c580b09371874fc09ff2602ca0c45098",
+        "915d2520a65a47be9d88c38bf3956d67",
+        "54822921acfb4746a5bcf451ea3e80e0",
+        "7545bcf430a14128a90b4d0ffbe7f9ca",
+        "4c863dbb528a4c3884bf2192acfa03c4",
+        "8d3d2cd6274f466f80089ad23a8ae766",
+        "ff451ca59a9b4078b1c48f83bf9feb10",
+        "0086730c0de94d8fa72bb829e73de393",
+        "f06987864f2c4daba4c588b14db07d94",
+        "522a18cdcb054e83a68c62616cadebf0",
+        "77021bed23814d91a72d6618e6226feb",
+        "d6f7f7a7442346539cbef3ec15fd58cd",
+        "c09a3aabf8604a6e92d369ce745b6b98",
+        "c367dccd9e854a35b9c197928bea8c43",
+        "3e9d403b22bb4b95a0b2a4da6e562277",
+        "fe70ba6c5c2b47ae924d2e0feff24436",
+        "b643df341e38420397e0f359369b821e",
+        "27c5ba6995f945b2a80a37b7d4b87f0d",
+        "469abf4ab8bb4531bb1f28e0dfaefac7",
+        "de5f324d5ac24cef9e07e82f1af646e8",
+        "528f632567874039b014a47e2e9e6a65",
+        "c44082304c7845179fd2b81fcc8004da",
+        "6e492719637546698bfd00b632bb4eda",
+        "8f40d1dd0cbd4d5cbe773467f71af80b",
+        "0c287c0959ad41968b6ff41437376964",
+        "2c2e3318d3e44cacbeb236a354730a6e",
+        "8801a25676a1416e82e4c9004843268f",
+        "a861819ea8254db9a23b5a7fc811a856",
+        "62740e4538564bb3b36684df0779cddc",
+        "cf01209aa12246999728369e2e10f8e6",
+        "ed89bf2a1bc042ba9eace793ff804674",
+        "5853741fd46e4d998f8b93e84b2c0ee1",
+        "119b6aae670948e981df877141124cc8",
+        "f1a5e89501894760873bc8bec83e79c4",
+        "08d84edaad8245129b19a676cb65edc0",
+        "46abdfb3596d49dda818bc52bb637387",
+        "dd4e97a2a94a4b07ac5b325da10b4dcc",
+        "cfc82f434897413aa0ea2f0cfc40ae79",
+        "27fe259c0df04a5cbc012381295d43f4",
+        "33bf76a6529d4303be22081a9cc4a3ed",
+        "fd45c4949e45402286904d31608ac718",
+        "b941ca7ce63f4bff9ef9f0ddea865b14",
+        "ca4a269015f548ef868303d8bff62e24",
+        "4a603ea27e2d46d58c2a3d25a20da3c1",
+        "9aecf6e4c312446085964d2a1ad9bf01",
+        "e3441931ca224a9196c89bcb6238890f",
+        "18b09b01607942089726a7bc4ad83566",
+        "52e26c28500c4d428da3a9e8dbde34fa",
+        "89c334a202144f43a7a99f546dcd830a",
+        "dff2a2e7b2b84ac49d0e096ec7f03fe3",
+        "5dea87ac8463438d936d83bf589e495f",
+        "ef18ab6055934556b3561a0ce5ac0b1d",
+        "ebe0e8d3aea044a0affda1e672236842",
+        "6009437c53f0446c8fe939b01e0d08d1",
+        "2160509c8816456993ebc86abad5e8d7",
+        "96e50231385d41589ec7100954b9a469",
+        "1fa21245189d490ab1d5dcceaa527567",
+        "59786e639aec470b8ab845a4e6a6654e",
+        "debe4ef3446c41b891e9e5839dd6b352",
+        "92089a70e6954e9bbb79d96e940f645c",
+        "b3f2408f251a4c39b659182d82500e7f",
+        "c1a6cf7c41d743569ce18a870390afbc"
+      ],
+      "policies": [
+        "smallest",
+        "largest",
+        "fastest",
+        "highest_quality",
+        "lowest_memory",
+        "adaptive"
+      ],
+      "constraints": {
+        "max_latency_ms": 15000.0,
+        "max_memory_gb": null,
+        "max_vram_gb": null,
+        "min_quality": null,
+        "min_throughput_tps": null,
+        "max_model_size_gb": null,
+        "allowed_backends": null,
+        "allowed_models": null,
+        "preferred_device": null
+      },
+      "allow_overlap": false,
+      "weights": {
+        "quality": 0.6,
+        "latency_ms": 0.3,
+        "ram_gb": 0.1,
+        "vram_gb": 0.0,
+        "throughput_tps": 0.0,
+        "size_gb": 0.0
+      }
+    },
+    "events": [
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:06.582569+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-0",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:13.194325+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-0",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:19.784938+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-0",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:26.905151+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-1",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:34.020995+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-1",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:41.148950+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-1",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:47.911031+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-2",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:19:54.757429+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-2",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:01.610139+00:00",
+        "payload": {
+          "task_id": "evaluation-classification-2",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 386.4772999950219,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 556.328233657858,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1165.3675999841653,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 118.13431176339782,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 348.14869999536313,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 94.76277718112325,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:09.088464+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-0",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:16.114890+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-0",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:23.084171+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-0",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:29.386846+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-1",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:35.753597+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-1",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:41.974969+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-1",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:48.305007+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-2",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:20:54.588451+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-2",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:01.088895+00:00",
+        "payload": {
+          "task_id": "evaluation-extraction-2",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 399.4424999982584,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 324.78077297823967,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 810.1081000058912,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 115.64732384864656,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 332.0081999991089,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 130.95861707700365,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:08.220483+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-0",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:15.301809+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-0",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:22.498405+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-0",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:29.633957+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-1",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:36.892234+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-1",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:44.205858+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-1",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:52.027088+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-2",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:21:59.502355+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-2",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:06.982089+00:00",
+        "payload": {
+          "task_id": "evaluation-reasoning-2",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 402.70559999044053,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 293.3411557641537,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1204.82980000088,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.10444618745738,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 1.0,
+                  "latency_ms": 355.50060000969097,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 108.13733441470667,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:14.735100+00:00",
+        "payload": {
+          "task_id": "evaluation-code-0",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:22.583765+00:00",
+        "payload": {
+          "task_id": "evaluation-code-0",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:30.405535+00:00",
+        "payload": {
+          "task_id": "evaluation-code-0",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:38.628623+00:00",
+        "payload": {
+          "task_id": "evaluation-code-1",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:46.724191+00:00",
+        "payload": {
+          "task_id": "evaluation-code-1",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:22:54.941309+00:00",
+        "payload": {
+          "task_id": "evaluation-code-1",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:23:03.445907+00:00",
+        "payload": {
+          "task_id": "evaluation-code-2",
+          "policy": "lowest_memory",
+          "repetition": 0,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:23:11.684293+00:00",
+        "payload": {
+          "task_id": "evaluation-code-2",
+          "policy": "lowest_memory",
+          "repetition": 1,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "abstention",
+        "timestamp": "2026-10-07T05:23:19.806141+00:00",
+        "payload": {
+          "task_id": "evaluation-code-2",
+          "policy": "lowest_memory",
+          "repetition": 2,
+          "selection": {
+            "selected": null,
+            "policy": "lowest_memory",
+            "candidates": [
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen2.5:0.5b",
+                  "label": "",
+                  "family": "qwen2",
+                  "parameter_count": null,
+                  "size_gb": 0.397821319,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 479.30999999516644,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 233.27605110300692,
+                  "size_gb": 0.397821319,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "qwen3:4b",
+                  "label": "",
+                  "family": "qwen3",
+                  "parameter_count": null,
+                  "size_gb": 2.497293931,
+                  "quantization": "Q4_K_M",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": [
+                    {
+                      "name": "think",
+                      "value": false
+                    }
+                  ]
+                },
+                "estimates": {
+                  "quality": 0.0,
+                  "latency_ms": 1202.0108999859076,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 117.06217830764672,
+                  "size_gb": 2.497293931,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              },
+              {
+                "configuration": {
+                  "backend": "ollama",
+                  "model": "smollm2:1.7b",
+                  "label": "",
+                  "family": "llama",
+                  "parameter_count": null,
+                  "size_gb": 1.820428533,
+                  "quantization": "Q8_0",
+                  "context_size": 2048,
+                  "generation": {
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "max_output_tokens": 96
+                  },
+                  "device": "auto",
+                  "options": []
+                },
+                "estimates": {
+                  "quality": 0.3333333333333333,
+                  "latency_ms": 449.7187999950256,
+                  "ram_gb": null,
+                  "vram_gb": null,
+                  "throughput_tps": 177.08428199912976,
+                  "size_gb": 1.820428533,
+                  "samples": 9
+                },
+                "violations": [],
+                "utility": null,
+                "pareto": false
+              }
+            ],
+            "reason": "No model satisfies all constraints with sufficient comparable evidence."
+          }
+        }
+      },
+      {
+        "kind": "completed",
+        "timestamp": "2026-10-07T05:23:21.068457+00:00",
+        "payload": {}
+      }
+    ]
+  },
+  "ablation": {
+    "configuration": {
+      "experiment": {
+        "name": "equal-weights-ablation",
+        "split": "evaluation",
+        "repetitions": 3,
+        "warmup_runs": 1,
+        "seed": 42,
+        "timeout_seconds": 120.0,
+        "mode": "warm"
+      },
+      "models": [
+        {
+          "backend": "ollama",
+          "model": "qwen2.5:0.5b",
+          "label": "",
+          "family": "qwen2",
+          "parameter_count": null,
+          "size_gb": 0.397821319,
+          "quantization": "Q4_K_M",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": []
+        },
+        {
+          "backend": "ollama",
+          "model": "smollm2:1.7b",
+          "label": "",
+          "family": "llama",
+          "parameter_count": null,
+          "size_gb": 1.820428533,
+          "quantization": "Q8_0",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": []
+        },
+        {
+          "backend": "ollama",
+          "model": "qwen3:4b",
+          "label": "",
+          "family": "qwen3",
+          "parameter_count": null,
+          "size_gb": 2.497293931,
+          "quantization": "Q4_K_M",
+          "context_size": 2048,
+          "generation": {
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "max_output_tokens": 96
+          },
+          "device": "auto",
+          "options": [
+            {
+              "name": "think",
+              "value": false
+            }
+          ]
+        }
+      ],
+      "suite": "custom",
+      "tasks": [
+        {
+          "id": "evaluation-classification-0",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: I loved every minute of the concert.",
+          "reference": "positive",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-classification-1",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The food tasted terrible.",
+          "reference": "negative",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-classification-2",
+          "category": "classification",
+          "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The meeting starts at noon.",
+          "reference": "neutral",
+          "expected_labels": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "metrics": [
+            "accuracy"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-0",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Tessa moved to Bern last year. Reply with the city only.",
+          "reference": "Bern",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-1",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Niko moved to Kyoto last year. Reply with the city only.",
+          "reference": "Kyoto",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-extraction-2",
+          "category": "extraction",
+          "prompt": "Extract only the city name from this sentence: Arun moved to Perth last year. Reply with the city only.",
+          "reference": "Perth",
+          "expected_labels": [],
+          "metrics": [
+            "normalized_exact_match",
+            "token_f1"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-0",
+          "category": "reasoning",
+          "prompt": "What is 9 times 8? Give only the final numeric answer.",
+          "reference": "72",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-1",
+          "category": "reasoning",
+          "prompt": "There are 23 books. 7 are lent out. How many remain? Give only the final numeric answer.",
+          "reference": "16",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-reasoning-2",
+          "category": "reasoning",
+          "prompt": "What is (18 + 12) divided by 5? Give only the final numeric answer.",
+          "reference": "6",
+          "expected_labels": [],
+          "metrics": [
+            "numeric_answer"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-0",
+          "category": "code",
+          "prompt": "Write only a Python function def subtract(a, b): to return a minus b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"subtract\", \"cases\": [{\"args\": [9, 3], \"expected\": 6}, {\"args\": [-2, 2], \"expected\": -4}, {\"args\": [7, 7], \"expected\": 0}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-1",
+          "category": "code",
+          "prompt": "Write only a Python function def smaller(a, b): to return the smaller of a and b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"smaller\", \"cases\": [{\"args\": [2, 3], \"expected\": 2}, {\"args\": [-2, -1], \"expected\": -2}, {\"args\": [7, 7], \"expected\": 7}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        },
+        {
+          "id": "evaluation-code-2",
+          "category": "code",
+          "prompt": "Write only a Python function def odd(n): to return whether n is odd as a bool. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+          "reference": "{\"function\": \"odd\", \"cases\": [{\"args\": [2], \"expected\": false}, {\"args\": [3], \"expected\": true}, {\"args\": [0], \"expected\": false}]}",
+          "expected_labels": [],
+          "metrics": [
+            "code_test_success"
+          ],
+          "generation": null,
+          "dataset": "adaptiveedge-authored",
+          "dataset_version": "1",
+          "metadata": {}
+        }
+      ]
+    },
+    "provenance": {
+      "kind": "policy_evaluation",
+      "training_experiment": "f46a46f7e3bb-1913531a3d4543c1abc53636f147ab94",
+      "training_run_ids": [
+        "1d97acc3a688496ba527131e1e201f1c",
+        "41172eb8c0264709b091b7ac04c38314",
+        "5c72321670b0454f99dc0c9a6347307c",
+        "6ffc83d113f144998ca72318fb257f69",
+        "370ab34522874b11a185e00eed43b4a3",
+        "5a6d2173e2a74fc498aa3510227fc23b",
+        "d90d158d63684e299b22c700e2f5ae75",
+        "20674f15103c47729b904dec17825781",
+        "9b5a6ce6c3f644d1b5561c2ca07518bc",
+        "0bbcb1c1fa68425d87a4651ba3bb739b",
+        "5bd2110205c94ab0b7c9dde904d8b967",
+        "3a727bd1f2cb4d19825a77ea8e50e90c",
+        "175cd4922f254b109de95312e94fc222",
+        "007c0bc7a1c14bc29637b518f54dec1a",
+        "b562e0a1ccc040588bad66c1e20fd15f",
+        "54abd58f26cf4253ab5acee18200610e",
+        "2f0cc7d3472b44a782cc35997822876c",
+        "5bc0f92548744f359ff8ace51acb8c3a",
+        "73bd5849b6144b3e84694dcbd86c4452",
+        "aab2311b897f460c8589b2acabe5a716",
+        "bfa27efe68234b1a88e76c455d83d7bb",
+        "d38ac69f532b40cf9e60fa01beb65854",
+        "29589a38c2fe459c8117508bdd9e6a07",
+        "0d567f661c4c4c24bd5e6a36ad230eb1",
+        "0cc03f8f452c47bfa1e5d5173a60c841",
+        "05cf1862f6f344bbb546de44aa1c9686",
+        "972f5fd4bcee4e96826768691d99f6b3",
+        "05c5bd40c99f4e76b5747f1478330e23",
+        "281509bb6be845a09bea3fc3d0ac2be0",
+        "7110ac4bc3484f35832f28e4da92bd98",
+        "0e63cde1cf9d45d0aaa3d206351ccecb",
+        "786f853f1aaa411bacff2452eec6703a",
+        "0c1a23f3d30243a6b81d2b803dcc8f8e",
+        "100e6678d04b4dadb92cd5313e8f4ab2",
+        "6f1949a4a6754910a97a96380ae4f47c",
+        "af6dc25347034c8ea65ec9b31bbf011a",
+        "d973092e7e5348c49ae8eb167bd53136",
+        "e6a7481b202e4180ac679e254b132b6a",
+        "014a89348f284e70af72bf8e7e73da1b",
+        "3e5c1544d62441ada8f5aaf76b0885e6",
+        "d074bdc493594aa485acc857321859af",
+        "18cb9eba203f4f0d9336034bcc5a2ce6",
+        "812abc16fdd74f61bb603c4c39741e43",
+        "8147a401bdc444ef9437b0f2d1a237a5",
+        "4c2cf9ba3ce14688a7e3816909b14dee",
+        "6c5c4ed99d1e498390e6af0bb6cd060c",
+        "c580b09371874fc09ff2602ca0c45098",
+        "915d2520a65a47be9d88c38bf3956d67",
+        "54822921acfb4746a5bcf451ea3e80e0",
+        "7545bcf430a14128a90b4d0ffbe7f9ca",
+        "4c863dbb528a4c3884bf2192acfa03c4",
+        "8d3d2cd6274f466f80089ad23a8ae766",
+        "ff451ca59a9b4078b1c48f83bf9feb10",
+        "0086730c0de94d8fa72bb829e73de393",
+        "f06987864f2c4daba4c588b14db07d94",
+        "522a18cdcb054e83a68c62616cadebf0",
+        "77021bed23814d91a72d6618e6226feb",
+        "d6f7f7a7442346539cbef3ec15fd58cd",
+        "c09a3aabf8604a6e92d369ce745b6b98",
+        "c367dccd9e854a35b9c197928bea8c43",
+        "3e9d403b22bb4b95a0b2a4da6e562277",
+        "fe70ba6c5c2b47ae924d2e0feff24436",
+        "b643df341e38420397e0f359369b821e",
+        "27c5ba6995f945b2a80a37b7d4b87f0d",
+        "469abf4ab8bb4531bb1f28e0dfaefac7",
+        "de5f324d5ac24cef9e07e82f1af646e8",
+        "528f632567874039b014a47e2e9e6a65",
+        "c44082304c7845179fd2b81fcc8004da",
+        "6e492719637546698bfd00b632bb4eda",
+        "8f40d1dd0cbd4d5cbe773467f71af80b",
+        "0c287c0959ad41968b6ff41437376964",
+        "2c2e3318d3e44cacbeb236a354730a6e",
+        "8801a25676a1416e82e4c9004843268f",
+        "a861819ea8254db9a23b5a7fc811a856",
+        "62740e4538564bb3b36684df0779cddc",
+        "cf01209aa12246999728369e2e10f8e6",
+        "ed89bf2a1bc042ba9eace793ff804674",
+        "5853741fd46e4d998f8b93e84b2c0ee1",
+        "119b6aae670948e981df877141124cc8",
+        "f1a5e89501894760873bc8bec83e79c4",
+        "08d84edaad8245129b19a676cb65edc0",
+        "46abdfb3596d49dda818bc52bb637387",
+        "dd4e97a2a94a4b07ac5b325da10b4dcc",
+        "cfc82f434897413aa0ea2f0cfc40ae79",
+        "27fe259c0df04a5cbc012381295d43f4",
+        "33bf76a6529d4303be22081a9cc4a3ed",
+        "fd45c4949e45402286904d31608ac718",
+        "b941ca7ce63f4bff9ef9f0ddea865b14",
+        "ca4a269015f548ef868303d8bff62e24",
+        "4a603ea27e2d46d58c2a3d25a20da3c1",
+        "9aecf6e4c312446085964d2a1ad9bf01",
+        "e3441931ca224a9196c89bcb6238890f",
+        "18b09b01607942089726a7bc4ad83566",
+        "52e26c28500c4d428da3a9e8dbde34fa",
+        "89c334a202144f43a7a99f546dcd830a",
+        "dff2a2e7b2b84ac49d0e096ec7f03fe3",
+        "5dea87ac8463438d936d83bf589e495f",
+        "ef18ab6055934556b3561a0ce5ac0b1d",
+        "ebe0e8d3aea044a0affda1e672236842",
+        "6009437c53f0446c8fe939b01e0d08d1",
+        "2160509c8816456993ebc86abad5e8d7",
+        "96e50231385d41589ec7100954b9a469",
+        "1fa21245189d490ab1d5dcceaa527567",
+        "59786e639aec470b8ab845a4e6a6654e",
+        "debe4ef3446c41b891e9e5839dd6b352",
+        "92089a70e6954e9bbb79d96e940f645c",
+        "b3f2408f251a4c39b659182d82500e7f",
+        "c1a6cf7c41d743569ce18a870390afbc"
+      ],
+      "policies": [
+        "adaptive"
+      ],
+      "constraints": {
+        "max_latency_ms": 15000.0,
+        "max_memory_gb": null,
+        "max_vram_gb": null,
+        "min_quality": null,
+        "min_throughput_tps": null,
+        "max_model_size_gb": null,
+        "allowed_backends": null,
+        "allowed_models": null,
+        "preferred_device": null
+      },
+      "allow_overlap": false,
+      "weights": {
+        "quality": 1.0,
+        "latency_ms": 1.0,
+        "ram_gb": 0.0,
+        "vram_gb": 0.0,
+        "throughput_tps": 0.0,
+        "size_gb": 0.0
+      }
+    },
+    "events": [
+      {
+        "kind": "completed",
+        "timestamp": "2026-10-07T05:24:09.219979+00:00",
+        "payload": {}
+      }
+    ]
+  },
+  "ollama": "0.32.6",
+  "checksums": {
+    "ablation-raw.csv": "d64db419950b5400742704745b0c9edcf20e2ba2d5d73692116f6d2a0fcdd4b4",
+    "ablation-research.json": "6f9b19fd82bd934ada22f5276898ce9d052a2898091a25849e0fd5c638e34078",
+    "aggregate-results.csv": "66c12b4fa941ca6540382a63f23b57c49e6ffda49a2aebbe9440597986d4768f",
+    "calibration-config.json": "11acf2dfff804cce94f555facd7becba4152923884b012b14b04d7688e4a2780",
+    "calibration-raw.csv": "b8783f6d0ab7a1f7f12dcc5d30978965491a0d8ce494040ac40b691f76b9b2bd",
+    "effects.csv": "09c29c4eff88f0cf6f0381241c617b62b01431c453ca792a9588962eb2eef417",
+    "evaluation-config.json": "bc0826ca5a8b856e5ac7ee9823ef78fea77f534629181967638de1e3346bd354",
+    "evaluation-raw.csv": "64d98aa041fe98e658868c17f8c6a04a154cec49c246b5dce35a61d89cd70295",
+    "figures/00-classification-policy-quality.svg": "d76f08769f6b5905f9edb291afc12eb3f43061d918307d4894bb353075bc29e0",
+    "figures/00-classification-prediction-latency_ms.svg": "f4e35339e1a2d24b097ea64d31f4670d5ac2f21cf1852cc70cfb2d9f7e05e299",
+    "figures/01-code-policy-quality.svg": "22bdb9a7ff312dc467823b211bfe4e7a3f4a2cff4bcfb706516c76b7287393cc",
+    "figures/01-code-prediction-latency_ms.svg": "d077a8422558c557cef1b23957dd4bfd796de2ca9d9fe09f9cdd54170327cd8b",
+    "figures/02-extraction-policy-quality.svg": "ad755f1bb9b68d935dae60b89312a6a6ba3794964d55650c4823298f5df42b04",
+    "figures/02-extraction-prediction-latency_ms.svg": "782ec4457a1f128a227562e011d56793eb14f2d7c14c4f0d80c6a7676d8e674c",
+    "figures/03-reasoning-policy-quality.svg": "a6871de6c061c06e243bf4f97159d23d342a8756564e735e3613d70c0e12f3b0",
+    "figures/03-reasoning-prediction-latency_ms.svg": "ab8e7bacaa75efd73a8fa0e6df57224cd620524b185e644d2ec715003b77234d",
+    "policy-comparison.csv": "66c12b4fa941ca6540382a63f23b57c49e6ffda49a2aebbe9440597986d4768f",
+    "prediction-errors.csv": "f0346363531e62412e2c94bf2a75e59b00084af594f49679a5c122dc0577a296",
+    "readme-results.md": "a8c1dbecd38b2ac7339b42775f48b2c7332914e715ad56b28774ad4399f354f0",
+    "report.md": "43d5e271c781ec72d91b8a511db8e8e2699545ddc58a575f6630ad0e7a3ade33",
+    "research.json": "e7d9c261234f8058a957dca2b5490940035a7416e644f6786aba55d4bc1a6519"
+  }
+}

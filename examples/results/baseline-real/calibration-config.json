@@ -1,0 +1,255 @@
+{
+  "experiment": {
+    "name": "real-calibration",
+    "split": "calibration",
+    "repetitions": 3,
+    "warmup_runs": 1,
+    "seed": 42,
+    "timeout_seconds": 120.0,
+    "mode": "warm"
+  },
+  "models": [
+    {
+      "backend": "ollama",
+      "model": "qwen2.5:0.5b",
+      "label": "",
+      "family": "qwen2",
+      "parameter_count": null,
+      "size_gb": 0.397821319,
+      "quantization": "Q4_K_M",
+      "context_size": 2048,
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_output_tokens": 96
+      },
+      "device": "auto",
+      "options": []
+    },
+    {
+      "backend": "ollama",
+      "model": "smollm2:1.7b",
+      "label": "",
+      "family": "llama",
+      "parameter_count": null,
+      "size_gb": 1.820428533,
+      "quantization": "Q8_0",
+      "context_size": 2048,
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_output_tokens": 96
+      },
+      "device": "auto",
+      "options": []
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen3:4b",
+      "label": "",
+      "family": "qwen3",
+      "parameter_count": null,
+      "size_gb": 2.497293931,
+      "quantization": "Q4_K_M",
+      "context_size": 2048,
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_output_tokens": 96
+      },
+      "device": "auto",
+      "options": [
+        {
+          "name": "think",
+          "value": false
+        }
+      ]
+    }
+  ],
+  "suite": "custom",
+  "tasks": [
+    {
+      "id": "calibration-classification-0",
+      "category": "classification",
+      "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The service was wonderful.",
+      "reference": "positive",
+      "expected_labels": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "metrics": [
+        "accuracy"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-classification-1",
+      "category": "classification",
+      "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: This product broke immediately.",
+      "reference": "negative",
+      "expected_labels": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "metrics": [
+        "accuracy"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-classification-2",
+      "category": "classification",
+      "prompt": "Classify the sentiment. Reply with exactly one label: positive, negative, or neutral. Text: The parcel arrived today.",
+      "reference": "neutral",
+      "expected_labels": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "metrics": [
+        "accuracy"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-extraction-0",
+      "category": "extraction",
+      "prompt": "Extract only the city name from this sentence: Mira moved to Oslo last year. Reply with the city only.",
+      "reference": "Oslo",
+      "expected_labels": [],
+      "metrics": [
+        "normalized_exact_match",
+        "token_f1"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-extraction-1",
+      "category": "extraction",
+      "prompt": "Extract only the city name from this sentence: Leon moved to Lima last year. Reply with the city only.",
+      "reference": "Lima",
+      "expected_labels": [],
+      "metrics": [
+        "normalized_exact_match",
+        "token_f1"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-extraction-2",
+      "category": "extraction",
+      "prompt": "Extract only the city name from this sentence: Sana moved to Rome last year. Reply with the city only.",
+      "reference": "Rome",
+      "expected_labels": [],
+      "metrics": [
+        "normalized_exact_match",
+        "token_f1"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-reasoning-0",
+      "category": "reasoning",
+      "prompt": "What is 7 times 6? Give only the final numeric answer.",
+      "reference": "42",
+      "expected_labels": [],
+      "metrics": [
+        "numeric_answer"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-reasoning-1",
+      "category": "reasoning",
+      "prompt": "There are 15 apples. 4 are eaten. How many remain? Give only the final numeric answer.",
+      "reference": "11",
+      "expected_labels": [],
+      "metrics": [
+        "numeric_answer"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-reasoning-2",
+      "category": "reasoning",
+      "prompt": "What is (12 + 8) divided by 4? Give only the final numeric answer.",
+      "reference": "5",
+      "expected_labels": [],
+      "metrics": [
+        "numeric_answer"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-code-0",
+      "category": "code",
+      "prompt": "Write only a Python function def add(a, b): to return the sum of a and b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+      "reference": "{\"function\": \"add\", \"cases\": [{\"args\": [2, 3], \"expected\": 5}, {\"args\": [-2, 2], \"expected\": 0}, {\"args\": [0, 7], \"expected\": 7}]}",
+      "expected_labels": [],
+      "metrics": [
+        "code_test_success"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-code-1",
+      "category": "code",
+      "prompt": "Write only a Python function def larger(a, b): to return the larger of a and b. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+      "reference": "{\"function\": \"larger\", \"cases\": [{\"args\": [2, 3], \"expected\": 3}, {\"args\": [-2, -1], \"expected\": -1}, {\"args\": [7, 7], \"expected\": 7}]}",
+      "expected_labels": [],
+      "metrics": [
+        "code_test_success"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    },
+    {
+      "id": "calibration-code-2",
+      "category": "code",
+      "prompt": "Write only a Python function def even(n): to return whether n is even as a bool. Use exactly one return expression. No imports, loops, assignments, explanation or markdown. Allowed calls: abs, min, max, len.",
+      "reference": "{\"function\": \"even\", \"cases\": [{\"args\": [2], \"expected\": true}, {\"args\": [3], \"expected\": false}, {\"args\": [0], \"expected\": true}]}",
+      "expected_labels": [],
+      "metrics": [
+        "code_test_success"
+      ],
+      "generation": null,
+      "dataset": "adaptiveedge-authored",
+      "dataset_version": "1",
+      "metadata": {}
+    }
+  ]
+}
